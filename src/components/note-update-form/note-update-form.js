@@ -53,7 +53,7 @@ constructor(props) {
           <input name="completed" type="checkbox" value = {this.state.completed}/>
         </label>
         <button>Update Note</button>
-        <button onAbort={this.cancelUpdate}>Cancel Update</button>
+        <button onAbort={() => this.cancelUpdate}>Cancel Update</button>
       </form>
         </Fragment>
       );

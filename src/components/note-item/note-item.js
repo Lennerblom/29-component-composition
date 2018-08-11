@@ -15,24 +15,44 @@ import NoteUpdateForm from '../note-update-form/note-update-form';
 export default class NoteItem extends React.Component {
 constructor(props){
     super(props);
+    this.state = {
+        view: 'normal'
+    }
+    this.updateView = this.updateView.bind(this);
+    this.normalView = this.normalView.bind(this);
 }
-
+updateView() {
+    this.setState({view: 'edit'});
+}
+normalView() {
+    this.setState({view: 'normal'})
+}
     render() {
-        function updateForm() {
-            return (<NoteUpdateForm note={this.props.note} onUpdate={this.props.onUpdate} />);
-        }
 
-        return(
+        if(this.state.view === 'edit') {
+            
+          return (
             <React.Fragment>
-                <li onDoubleClick={updateForm}>
+          <NoteUpdateForm note={this.props.note} onUpdate={this.props.onUpdate} {...this.normalView} />
+          <li onDoubleClick={this.updateView}>
+          <h2>{this.props.note.title}</h2>
+          <p>{this.props.note.content}</p>
+          <button onClick={() => this.normalView(this.props.note.id)}>return to normal view</button>
+          </li>
+          </React.Fragment>
+          );
+        } 
+        else {
+          return(
+            <React.Fragment>
+                <li onDoubleClick={this.updateView}>
                 <h2>{this.props.note.title}</h2>
                 <p>{this.props.note.content}</p>
-                <NoteUpdateForm note={this.props.note} onUpdate={this.props.onUpdate} />
                 <button onClick={() => this.props.onRemove(this.props.note.id)}>Delete Note</button>
                 </li>
             </React.Fragment>
-
-        );
+          );
+        }
     }
 }
 
