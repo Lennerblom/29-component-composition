@@ -8,17 +8,15 @@ h2, p {
 color: rgb(69, 17, 212);
 
 }
-form input, textarea {
+form, input, textarea {
  
     font-family: fantasy;
     text-align: center;
     margin: 1em;
     background-color: aliceblue;
+    width: 50%;
+
 }
 ol {
     list-style-type: lower-roman;
-}
-label, button{
-   
-    margin: 1em;
 }
