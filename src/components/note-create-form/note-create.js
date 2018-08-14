@@ -49,4 +49,3 @@ export default class NoteForm extends Component {
   }
 }
 
-// onComplete the NoteForm should add a note to the application state
